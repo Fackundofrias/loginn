@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+    <title>Berserk</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gantz guide</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="cl-icon/css/all.min.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <img src="eclipse.jpg" class = "img">
+        <form class="form" onsubmit="return login()">
+            <h1 class="title">Login</h1>
+            <div class="inp">
+                <input type="text" id="username" class="input" placeholder="username">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="inp">
+                <input type="password" id="password" class="input" placeholder="password">
+                <i class="fas fa-lock"></i>
+            </div>
+            <button type="submit" class="submit">Iniciar Sesión</button>
+            <p class="footer">Desea registrarse? <a href="#" class="link" onclick="agregarUsuario()">Registrarse</a></p>
+
+        </form>
+        
+    </div>
+
+    <script>
+        var allowedUsers = [
+            { username: 'usuario1', password: 'contrasena1' },
+            { username: 'usuario2', password: 'contrasena2' }
+        ];
+    
+        function agregarUsuario() {
+            var nuevoUsuario = prompt("Ingrese el nombre de usuario:");
+            var nuevaContrasena = prompt("Ingrese la contraseña:");
+    
+            if (nuevoUsuario && nuevaContrasena) {
+                allowedUsers.push({ username: nuevoUsuario, password: nuevaContrasena });
+                alert('Usuario agregado exitosamente');
+            } else {
+                alert('No se agregó un nuevo usuario.');
+            }
+        }
+    
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+    
+            var loggedIn = false;
+    
+            for (var i = 0; i < allowedUsers.length; i++) {
+                if (allowedUsers[i].username === username && allowedUsers[i].password === password) {
+                    loggedIn = true;
+                    break;
+                }
+            }
+    
+            if (loggedIn) {
+                alert('Inicio de sesión exitoso');
+                window.location.href='index.html';
+            } else {
+                alert('Usuario denegado');
+            }
+    
+            return false;
+        }
+    </script>
+    
+    
+</body>
+</html>
